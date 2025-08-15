@@ -3,28 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Red Bridge Runners @ Red Bridge</title>
-  <meta name="description" content="We run together at Red Bridge — 8 partners, a story of loving sports">
+  <title>虹橋跑班 · Red Bridge Runners</title>
+  <meta name="description" content="我們在 Red Bridge 一起跑 —— 8 位夥伴，一段熱愛運動的故事">
   <style>
     :root{--bg:#ffffff;--text:#1f2937;--muted:#6b7280;--card:#f3f4f6;--accent:#2563eb;--accent-2:#60a5fa}
     :root.dark{--bg:#0b1220;--text:#e5e7eb;--muted:#9ca3af;--card:#111827;--accent:#60a5fa;--accent-2:#93c5fd}
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(6px);background:color-mix(in oklab, var(--bg) 85%, transparent);border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
-    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(6px);background:color-mix(in oklab, var(--bg) 85%, transparent);border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);z-index:5}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0}
     #brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     #brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(45deg,#00c6ff,#0072ff);display:inline-grid;place-items:center;color:#fff;font-weight:700;font-size:14px}
-    #nav{display:flex;gap:14px}
+    #nav{display:flex;gap:14px;flex-wrap:wrap}
     #nav a{text-decoration:none;color:var(--text);opacity:.9}
     #nav a:hover{opacity:1;color:var(--accent)}
-    #theme-toggle{border:1px solid color-mix(in oklab, var(--text) 20%, transparent);background:transparent;color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
+    .toolbar{display:flex;gap:8px;align-items:center}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none}
+    .chip{border:1px solid color-mix(in oklab, var(--text) 20%, transparent);background:transparent;color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
 
     .hero{padding:72px 0 36px;background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 12%, transparent), transparent)}
     .hero h1{font-size:clamp(28px,6vw,48px);margin:0 0 8px}
     .hero p{font-size:clamp(16px,2.6vw,20px);color:var(--muted);margin:0}
     .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none}
     .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
     .section{padding:48px 0}
     .section h2{font-size:clamp(22px,4vw,32px);margin:0 0 18px}
@@ -45,22 +46,28 @@
     .muted{color:var(--muted)}
 
     .footer{padding:28px 0;border-top:1px solid color-mix(in oklab, var(--text) 10%, transparent);color:var(--muted);font-size:14px}
-    code.inline{background:color-mix(in oklab, var(--text) 8%, transparent);padding:2px 6px;border-radius:6px}
+
+    /* === 雙語：英文副行預設隱藏，啟用時顯示成較小、較淡 === */
+    .en{display:none;color:var(--muted);font-size:.92em;margin-top:4px}
+    html.show-en .en{display:block}
   </style>
 </head>
 <body>
   <header>
     <div class="container">
       <nav>
-        <a id="brand" href="#top"><span class="logo">RR</span><strong>Red Bridge Runners</strong></a>
+        <a id="brand" href="#top"><span class="logo">RR</span><strong>虹橋跑班 · Red Bridge Runners</strong></a>
         <div id="nav">
-          <a href="#about">About</a>
-          <a href="#members">Members</a>
-          <a href="#location">Red Bridge</a>
-          <a href="#records">Activity</a>
-          <a href="#contact">Join Us</a>
+          <a href="#about">關於</a>
+          <a href="#members">成員</a>
+          <a href="#location">虹橋</a>
+          <a href="#records">活動</a>
+          <a href="#contact">加入我們</a>
         </div>
-        <button id="theme-toggle" aria-pressed="false">🌓</button>
+        <div class="toolbar">
+          <button id="lang-toggle" class="chip" aria-pressed="false" title="顯示/隱藏英文">EN</button>
+          <button id="theme-toggle" class="chip" aria-pressed="false" title="深淺色切換">🌓</button>
+        </div>
       </nav>
     </div>
   </header>
@@ -68,8 +75,10 @@
   <main id="top">
     <section class="hero">
       <div class="container">
-        <h1 id="site-title">Red Bridge Runners @ Red Bridge</h1>
-        <p id="site-tagline">We run together at Red Bridge — 8 partners, a story of loving sports</p>
+        <h1 id="site-title">虹橋跑班 · Red Bridge Runners</h1>
+        <p id="site-tagline">我們在 Red Bridge 一起跑 —— 8 位夥伴，一段熱愛運動的故事</p>
+        <div class="en" id="site-title-en">Red Bridge Runners @ Red Bridge</div>
+        <div class="en" id="site-tagline-en">We run together at Red Bridge — 8 partners, a story of loving sports</div>
         <div class="cta">
           <a class="btn primary" href="#members">看看我們的團隊</a>
           <a class="btn" href="#contact">想一起跑？加入我們</a>
@@ -80,7 +89,8 @@
     <section id="about" class="section">
       <div class="container">
         <h2>關於我們</h2>
-        <p class="lead">我們是一群熱愛跑步的朋友，每週固定在「Red Bridge」集合；用腳步丈量每一次日出與夕陽。8位成員，8種故事。</p>
+        <p class="lead" id="about-zh">我們是一群熱愛跑步的朋友，每週固定在「Red Bridge」集合；用腳步丈量每一次日出與夕陽。8 位成員，8 種故事。</p>
+        <p class="lead en" id="about-en">We are a group of running friends who meet weekly at Red Bridge, measuring every sunrise and sunset with our strides. Eight members, eight stories.</p>
       </div>
     </section>
 
@@ -93,23 +103,25 @@
 
     <section id="location" class="section">
       <div class="container">
-        <h2>Red Bridge — 我們的起跑點</h2>
-        <p id="loc-desc" class="lead">Red Bridge is our running base, with a wide river view and flat roads. Whether it’s morning or night, there’s always beautiful scenery to accompany us.</p>
+        <h2>虹橋 · 我們的起跑點 <span class="en">Red Bridge — Our Starting Point</span></h2>
+        <p id="loc-desc" class="lead">虹橋是我們的跑步基地，河景開闊、道路平坦；不管是晨跑還是夜跑，這裡總有美麗風景陪伴。</p>
+        <p class="en" id="loc-desc-en">Red Bridge is our running base, with a wide riverside view and flat paths. Whether morning or night, beautiful scenery is always with us.</p>
         <p><a id="loc-map" class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/nffgtMvHcEXjhLxt8">在 Google 地圖查看</a></p>
       </div>
     </section>
 
     <section id="records" class="section">
       <div class="container">
-        <h2>活動紀錄</h2>
+        <h2>活動紀錄 <span class="en">Activities</span></h2>
         <div id="activities"></div>
       </div>
     </section>
 
     <section id="contact" class="section">
       <div class="container">
-        <h2>加入我們</h2>
-        <p class="lead">喜歡一起跑嗎？聯絡我們，或直接來Red Bridge找我們！</p>
+        <h2>加入我們 <span class="en">Join Us</span></h2>
+        <p class="lead">喜歡一起跑嗎？聯絡我們，或直接來 Red Bridge 找我們！</p>
+        <p class="lead en">Want to run with us? Reach out, or find us at Red Bridge!</p>
         <p>
           Email：<a id="contact-email" href="#">hello@redbridgerunners.example</a><br>
           LINE 群：<a id="contact-line" href="#" target="_blank" rel="noopener">加入連結</a><br>
@@ -121,40 +133,44 @@
 
   <footer class="footer">
     <div class="container">
-      <span>© <span id="year"></span> Red Bridge Runners · 用腳步和笑聲寫下每一段里程</span>
+      <span>© <span id="year"></span> 虹橋跑班 · Red Bridge Runners · 用腳步和笑聲寫下每一段里程</span>
     </div>
   </footer>
 
   <script>
-    // --- 可編輯資料（改這段就好） ---
+    // --- 可編輯資料（雙語） ---
     window.SITE_DATA = {
       site: {
-        title: "Red Bridge Runners @ Red Bridge",
-        tagline: "We run together at Red Bridge — 8 partners, a story of loving sports",
+        title: "虹橋跑班 · Red Bridge Runners",
+        title_en: "Red Bridge Runners @ Red Bridge",
+        tagline: "我們在 Red Bridge 一起跑 —— 8 位夥伴，一段熱愛運動的故事",
+        tagline_en: "We run together at Red Bridge — 8 partners, a story of loving sports",
         contact: {
           email: "hello@redbridgerunners.example",
           line: "https://line.me/R/ti/g/your-line-group",
           instagram: "https://instagram.com/yourclub"
         },
         location: {
-          name: "Red Bridge",
-          description: "Red Bridge is our running base, with a wide river view and flat roads. Whether it’s morning or night, there’s always beautiful scenery to accompany us.",
+          name: "虹橋",
+          name_en: "Red Bridge",
+          description: "虹橋是我們的跑步基地，河景開闊、道路平坦；不管是晨跑還是夜跑，這裡總有美麗風景陪伴。",
+          description_en: "Red Bridge is our running base, with a wide riverside view and flat paths. Whether morning or night, beautiful scenery is always with us.",
           maps_url: "https://maps.app.goo.gl/nffgtMvHcEXjhLxt8"
         }
       },
       members: [
-        {name:"隊長 A", role:"配速 5'30", bio:"最愛日出晨跑，擅長帶隊配速。", img:"assets/img/SuperGood.jpg"},
-        {name:"成員 B", role:"全馬 PB 3:45", bio:"補給達人，賽事情報通。", img:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"},
-        {name:"成員 C", role:"10K 愛好者", bio:"攝影控，負責幫大家拍照。", img:"https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=400&auto=format&fit=crop"},
-        {name:"成員 D", role:"越野新手", bio:"最愛斜坡訓練，樂觀小太陽。", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=400&auto=format&fit=crop"},
-        {name:"成員 E", role:"長距離選手", bio:"補水背包不離身，耐力超群。", img:"https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=400&auto=format&fit=crop"},
-        {name:"成員 F", role:"配速 6'00", bio:"剛入坑的開心跑者。", img:"https://images.unsplash.com/photo-1520975652280-236d6a87f12d?q=80&w=400&auto=format&fit=crop"},
-        {name:"成員 G", role:"半馬 PB 1:45", bio:"補給口味：珍奶＋地瓜。", img:"https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=400&auto=format&fit=crop"},
-        {name:"成員 H", role:"配速 5'00", bio:"間歇課表的死忠信徒。", img:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400&auto=format&fit=crop"}
+        {name:"隊長 A", name_en:"Captain A", role:"配速 5'30", role_en:"Pacer 5'30\"", bio:"最愛日出晨跑，擅長帶隊配速。", bio_en:"Loves sunrise runs; reliable group pacer.", img:"assets/img/SuperGood.jpg"},
+        {name:"成員 B", name_en:"Member B", role:"全馬 PB 3:45", role_en:"Marathon PB 3:45", bio:"補給達人，賽事情報通。", bio_en:"Fueling pro and race intel scout.", img:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 C", name_en:"Member C", role:"10K 愛好者", role_en:"10K Enthusiast", bio:"攝影控，負責幫大家拍照。", bio_en:"Team photographer on the move.", img:"https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 D", name_en:"Member D", role:"越野新手", role_en:"Trail Newbie", bio:"最愛斜坡訓練，樂觀小太陽。", bio_en:"Hill-lover and our little sunshine.", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 E", name_en:"Member E", role:"長距離選手", role_en:"Endurance Runner", bio:"補水背包不離身，耐力超群。", bio_en:"Hydration-pack loyalist with big engine.", img:"https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 F", name_en:"Member F", role:"配速 6'00", role_en:"Pacer 6'00\"", bio:"剛入坑的開心跑者。", bio_en:"New happy runner to the crew.", img:"https://images.unsplash.com/photo-1520975652280-236d6a87f12d?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 G", name_en:"Member G", role:"半馬 PB 1:45", role_en:"Half PB 1:45", bio:"補給口味：珍奶＋地瓜。", bio_en:"Fuel combo: bubble tea + sweet potato.", img:"https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 H", name_en:"Member H", role:"配速 5'00", role_en:"Pacer 5'00\"", bio:"間歇課表的死忠信徒。", bio_en:"Interval workout believer.", img:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400&auto=format&fit=crop"}
       ],
       activities: [
-        {date:"2025-07-15", title:"夏季日落跑", distance:"10K", notes:"夕陽很美，補水充足。", img:"https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=800&auto=format&fit=crop"},
-        {date:"2025-06-10", title:"雨中奔跑", distance:"15K", notes:"專注步頻與安全。", img:"https://images.unsplash.com/photo-1520975853989-3b002da0c46b?q=80&w=800&auto=format&fit=crop"}
+        {date:"2025-07-15", title:"夏季日落跑", title_en:"Summer Sunset Run", distance:"10K", notes:"夕陽很美，補水充足。", notes_en:"Gorgeous sunset and well-hydrated.", img:"https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=800&auto=format&fit=crop"},
+        {date:"2025-06-10", title:"雨中奔跑", title_en:"Running in the Rain", distance:"15K", notes:"專注步頻與安全。", notes_en:"Focused on cadence and safety.", img:"https://images.unsplash.com/photo-1520975853989-3b002da0c46b?q=80&w=800&auto=format&fit=crop"}
       ]
     };
 
@@ -165,11 +181,13 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hero
+    // Hero（主標/副標）
     $('#site-title').textContent = data.site.title;
     $('#site-tagline').textContent = data.site.tagline;
+    if (data.site.title_en) $('#site-title-en').textContent = data.site.title_en; else $('#site-title-en').remove();
+    if (data.site.tagline_en) $('#site-tagline-en').textContent = data.site.tagline_en; else $('#site-tagline-en').remove();
 
-    // Members
+    // Members（成員卡）
     const grid = document.getElementById('members-grid');
     data.members.forEach(m => {
       const card = document.createElement('article');
@@ -178,19 +196,26 @@
         <img src="${m.img}" alt="${m.name}">
         <div class="card-body">
           <h3>${m.name}</h3>
+          ${m.name_en ? `<div class="en">${m.name_en}</div>` : ''}
           <p class="role">${m.role}</p>
+          ${m.role_en ? `<div class=\"en\">${m.role_en}</div>` : ''}
           <p>${m.bio}</p>
+          ${m.bio_en ? `<div class=\"en\">${m.bio_en}</div>` : ''}
         </div>
       `;
       grid.appendChild(card);
     });
 
-    // Location
+    // Location（地點描述與地圖）
     $('#loc-desc').textContent = data.site.location.description;
+    if (data.site.location.description_en) {
+      const el = document.getElementById('loc-desc-en');
+      if (el) el.textContent = data.site.location.description_en;
+    }
     const map = document.getElementById('loc-map');
-    map.href = data.site.location.maps_url;
+    map.href = data.site.location.maps_url; // 使用資料來源，避免手動改 HTML 被覆寫
 
-    // Activities
+    // Activities（活動）
     const actWrap = document.getElementById('activities');
     data.activities.forEach(a => {
       const item = document.createElement('div');
@@ -199,21 +224,23 @@
         <img src="${a.img}" alt="${a.title}">
         <div>
           <h4>${a.title} · ${a.distance}</h4>
+          ${a.title_en ? `<div class=\"en\">${a.title_en}</div>` : ''}
           <p class="muted">${a.date}</p>
           <p>${a.notes}</p>
+          ${a.notes_en ? `<div class=\"en\">${a.notes_en}</div>` : ''}
         </div>
       `;
       actWrap.appendChild(item);
     });
 
-    // Contact
+    // Contact（聯絡）
     const email = document.getElementById('contact-email');
     email.textContent = data.site.contact.email;
     email.href = 'mailto:' + data.site.contact.email;
     document.getElementById('contact-line').href = data.site.contact.line;
     document.getElementById('contact-ig').href = data.site.contact.instagram;
 
-    // Smooth scroll for nav
+    // Smooth scroll for nav（平滑捲動）
     $$('#nav a').forEach(a => {
       a.addEventListener('click', e => {
         const href = a.getAttribute('href');
@@ -224,16 +251,29 @@
       });
     });
 
-    // Dark mode toggle
-    const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
+    // Dark mode toggle（深淺色）
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       const mode = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-      toggle.setAttribute('aria-pressed', mode === 'dark');
+      themeToggle.setAttribute('aria-pressed', mode === 'dark');
       localStorage.setItem('site-theme', mode);
     });
-    const saved = localStorage.getItem('site-theme');
-    if (saved === 'dark') document.documentElement.classList.add('dark');
+    const savedTheme = localStorage.getItem('site-theme');
+    if (savedTheme === 'dark') document.documentElement.classList.add('dark');
+
+    // Language toggle（中/英開關：預設只顯示中文）
+    const langToggle = document.getElementById('lang-toggle');
+    const applyLang = (on) => {
+      document.documentElement.classList.toggle('show-en', on);
+      langToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      localStorage.setItem('pref-show-en', on ? '1' : '0');
+    };
+    applyLang(localStorage.getItem('pref-show-en') === '1');
+    langToggle.addEventListener('click', () => {
+      const on = !document.documentElement.classList.contains('show-en');
+      applyLang(on);
+    });
   </script>
 </body>
 </html>
