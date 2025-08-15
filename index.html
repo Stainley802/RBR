@@ -21,6 +21,7 @@
     .toolbar{display:flex;gap:8px;align-items:center}
     .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none}
     .chip{border:1px solid color-mix(in oklab, var(--text) 20%, transparent);background:transparent;color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
+    .chip.lang-active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent}
 
     .hero{padding:72px 0 36px;background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 12%, transparent), transparent)}
     .hero h1{font-size:clamp(28px,6vw,48px);margin:0 0 8px}
@@ -47,9 +48,11 @@
 
     .footer{padding:28px 0;border-top:1px solid color-mix(in oklab, var(--text) 10%, transparent);color:var(--muted);font-size:14px}
 
-    /* === 雙語：英文副行預設隱藏，啟用時顯示成較小、較淡 === */
-    .en{display:none;color:var(--muted);font-size:.92em;margin-top:4px}
-    html.show-en .en{display:block}
+    /* === 雙語模式：只顯示其中一種 === */
+    .zh{display:block}
+    .en{display:none}
+    html.lang-en .zh{display:none}
+    html.lang-en .en{display:block}
   </style>
 </head>
 <body>
@@ -65,7 +68,8 @@
           <a href="#contact">加入我們</a>
         </div>
         <div class="toolbar">
-          <button id="lang-toggle" class="chip" aria-pressed="false" title="顯示/隱藏英文">EN</button>
+          <button id="lang-zh" class="chip" aria-pressed="true" title="顯示中文">中</button>
+          <button id="lang-en" class="chip" aria-pressed="false" title="Show English">EN</button>
           <button id="theme-toggle" class="chip" aria-pressed="false" title="深淺色切換">🌓</button>
         </div>
       </nav>
@@ -75,10 +79,8 @@
   <main id="top">
     <section class="hero">
       <div class="container">
-        <h1 id="site-title">虹橋跑班 · Red Bridge Runners</h1>
-        <p id="site-tagline">我們在 Red Bridge 一起跑 —— 8 位夥伴，一段熱愛運動的故事</p>
-        <div class="en" id="site-title-en">Red Bridge Runners @ Red Bridge</div>
-        <div class="en" id="site-tagline-en">We run together at Red Bridge — 8 partners, a story of loving sports</div>
+        <h1><span id="site-title-zh" class="zh">虹橋跑班 · Red Bridge Runners</span><span id="site-title-en" class="en">Red Bridge Runners @ Red Bridge</span></h1>
+        <p><span id="site-tagline-zh" class="zh">我們在 Red Bridge 一起跑 —— 8 位夥伴，一段熱愛運動的故事</span><span id="site-tagline-en" class="en">We run together at Red Bridge — 8 partners, a story of loving sports</span></p>
         <div class="cta">
           <a class="btn primary" href="#members">看看我們的團隊</a>
           <a class="btn" href="#contact">想一起跑？加入我們</a>
@@ -88,39 +90,39 @@
 
     <section id="about" class="section">
       <div class="container">
-        <h2>關於我們</h2>
-        <p class="lead" id="about-zh">我們是一群熱愛跑步的朋友，每週固定在「Red Bridge」集合；用腳步丈量每一次日出與夕陽。8 位成員，8 種故事。</p>
+        <h2><span class="zh">關於我們</span><span class="en">About Us</span></h2>
+        <p class="lead zh" id="about-zh">我們是一群熱愛跑步的朋友，每週固定在「Red Bridge」集合；用腳步丈量每一次日出與夕陽。8 位成員，8 種故事。</p>
         <p class="lead en" id="about-en">We are a group of running friends who meet weekly at Red Bridge, measuring every sunrise and sunset with our strides. Eight members, eight stories.</p>
       </div>
     </section>
 
     <section id="members" class="section">
       <div class="container">
-        <h2>成員介紹</h2>
+        <h2><span class="zh">成員介紹</span><span class="en">Members</span></h2>
         <div id="members-grid" class="grid"></div>
       </div>
     </section>
 
     <section id="location" class="section">
       <div class="container">
-        <h2>虹橋 · 我們的起跑點 <span class="en">Red Bridge — Our Starting Point</span></h2>
-        <p id="loc-desc" class="lead">虹橋是我們的跑步基地，河景開闊、道路平坦；不管是晨跑還是夜跑，這裡總有美麗風景陪伴。</p>
-        <p class="en" id="loc-desc-en">Red Bridge is our running base, with a wide riverside view and flat paths. Whether morning or night, beautiful scenery is always with us.</p>
-        <p><a id="loc-map" class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/nffgtMvHcEXjhLxt8">在 Google 地圖查看</a></p>
+        <h2><span class="zh">虹橋 · 我們的起跑點</span><span class="en">Red Bridge — Our Starting Point</span></h2>
+        <p id="loc-desc-zh" class="lead zh">虹橋是我們的跑步基地，河景開闊、道路平坦；不管是晨跑還是夜跑，這裡總有美麗風景陪伴。</p>
+        <p id="loc-desc-en" class="lead en">Red Bridge is our running base, with a wide riverside view and flat paths. Whether morning or night, beautiful scenery is always with us.</p>
+        <p><a id="loc-map" class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/nffgtMvHcEXjhLxt8"><span class="zh">在 Google 地圖查看</span><span class="en">View on Google Maps</span></a></p>
       </div>
     </section>
 
     <section id="records" class="section">
       <div class="container">
-        <h2>活動紀錄 <span class="en">Activities</span></h2>
+        <h2><span class="zh">活動紀錄</span><span class="en">Activities</span></h2>
         <div id="activities"></div>
       </div>
     </section>
 
     <section id="contact" class="section">
       <div class="container">
-        <h2>加入我們 <span class="en">Join Us</span></h2>
-        <p class="lead">喜歡一起跑嗎？聯絡我們，或直接來 Red Bridge 找我們！</p>
+        <h2><span class="zh">加入我們</span><span class="en">Join Us</span></h2>
+        <p class="lead zh">喜歡一起跑嗎？聯絡我們，或直接來 Red Bridge 找我們！</p>
         <p class="lead en">Want to run with us? Reach out, or find us at Red Bridge!</p>
         <p>
           Email：<a id="contact-email" href="#">hello@redbridgerunners.example</a><br>
@@ -181,13 +183,20 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hero（主標/副標）
-    $('#site-title').textContent = data.site.title;
-    $('#site-tagline').textContent = data.site.tagline;
-    if (data.site.title_en) $('#site-title-en').textContent = data.site.title_en; else $('#site-title-en').remove();
-    if (data.site.tagline_en) $('#site-tagline-en').textContent = data.site.tagline_en; else $('#site-tagline-en').remove();
+    // Hero 文案
+    $('#site-title-zh').textContent = data.site.title;
+    $('#site-title-en').textContent = data.site.title_en || '';
+    $('#site-tagline-zh').textContent = data.site.tagline;
+    $('#site-tagline-en').textContent = data.site.tagline_en || '';
 
-    // Members（成員卡）
+    // About/Location 文案
+    $('#about-zh').textContent = $('#about-zh').textContent || '';
+    $('#about-en').textContent = $('#about-en').textContent || '';
+    $('#loc-desc-zh').textContent = data.site.location.description;
+    $('#loc-desc-en').textContent = data.site.location.description_en || '';
+    document.getElementById('loc-map').href = data.site.location.maps_url;
+
+    // Members（同卡顯示中/英兩套，透過 .zh/.en 控制顯示）
     const grid = document.getElementById('members-grid');
     data.members.forEach(m => {
       const card = document.createElement('article');
@@ -195,27 +204,18 @@
       card.innerHTML = `
         <img src="${m.img}" alt="${m.name}">
         <div class="card-body">
-          <h3>${m.name}</h3>
-          ${m.name_en ? `<div class="en">${m.name_en}</div>` : ''}
-          <p class="role">${m.role}</p>
-          ${m.role_en ? `<div class=\"en\">${m.role_en}</div>` : ''}
-          <p>${m.bio}</p>
-          ${m.bio_en ? `<div class=\"en\">${m.bio_en}</div>` : ''}
+          <h3 class="zh">${m.name}</h3>
+          ${m.name_en ? `<h3 class="en">${m.name_en}</h3>` : ''}
+          <p class="role zh">${m.role}</p>
+          ${m.role_en ? `<p class="role en">${m.role_en}</p>` : ''}
+          <p class="zh">${m.bio}</p>
+          ${m.bio_en ? `<p class="en">${m.bio_en}</p>` : ''}
         </div>
       `;
       grid.appendChild(card);
     });
 
-    // Location（地點描述與地圖）
-    $('#loc-desc').textContent = data.site.location.description;
-    if (data.site.location.description_en) {
-      const el = document.getElementById('loc-desc-en');
-      if (el) el.textContent = data.site.location.description_en;
-    }
-    const map = document.getElementById('loc-map');
-    map.href = data.site.location.maps_url; // 使用資料來源，避免手動改 HTML 被覆寫
-
-    // Activities（活動）
+    // Activities（雙語）
     const actWrap = document.getElementById('activities');
     data.activities.forEach(a => {
       const item = document.createElement('div');
@@ -223,35 +223,32 @@
       item.innerHTML = `
         <img src="${a.img}" alt="${a.title}">
         <div>
-          <h4>${a.title} · ${a.distance}</h4>
-          ${a.title_en ? `<div class=\"en\">${a.title_en}</div>` : ''}
+          <h4 class="zh">${a.title} · ${a.distance}</h4>
+          ${a.title_en ? `<h4 class="en">${a.title_en} · ${a.distance}</h4>` : ''}
           <p class="muted">${a.date}</p>
-          <p>${a.notes}</p>
-          ${a.notes_en ? `<div class=\"en\">${a.notes_en}</div>` : ''}
+          <p class="zh">${a.notes}</p>
+          ${a.notes_en ? `<p class="en">${a.notes_en}</p>` : ''}
         </div>
       `;
       actWrap.appendChild(item);
     });
 
-    // Contact（聯絡）
+    // Contact
     const email = document.getElementById('contact-email');
     email.textContent = data.site.contact.email;
     email.href = 'mailto:' + data.site.contact.email;
     document.getElementById('contact-line').href = data.site.contact.line;
     document.getElementById('contact-ig').href = data.site.contact.instagram;
 
-    // Smooth scroll for nav（平滑捲動）
+    // Smooth scroll
     $$('#nav a').forEach(a => {
       a.addEventListener('click', e => {
         const href = a.getAttribute('href');
-        if (href.startsWith('#')) {
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth'});
-        }
+        if (href.startsWith('#')) { e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth'}); }
       });
     });
 
-    // Dark mode toggle（深淺色）
+    // 深淺色
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
@@ -262,18 +259,22 @@
     const savedTheme = localStorage.getItem('site-theme');
     if (savedTheme === 'dark') document.documentElement.classList.add('dark');
 
-    // Language toggle（中/英開關：預設只顯示中文）
-    const langToggle = document.getElementById('lang-toggle');
-    const applyLang = (on) => {
-      document.documentElement.classList.toggle('show-en', on);
-      langToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-      localStorage.setItem('pref-show-en', on ? '1' : '0');
-    };
-    applyLang(localStorage.getItem('pref-show-en') === '1');
-    langToggle.addEventListener('click', () => {
-      const on = !document.documentElement.classList.contains('show-en');
-      applyLang(on);
-    });
+    // 語言切換：只有其中一種可見
+    const btnZh = document.getElementById('lang-zh');
+    const btnEn = document.getElementById('lang-en');
+    function applyLang(lang){
+      document.documentElement.classList.toggle('lang-en', lang==='en');
+      document.documentElement.classList.toggle('lang-zh', lang==='zh');
+      btnZh.classList.toggle('lang-active', lang==='zh');
+      btnEn.classList.toggle('lang-active', lang==='en');
+      btnZh.setAttribute('aria-pressed', lang==='zh');
+      btnEn.setAttribute('aria-pressed', lang==='en');
+      localStorage.setItem('pref-lang', lang);
+    }
+    const initLang = localStorage.getItem('pref-lang') || 'zh';
+    applyLang(initLang);
+    btnZh.addEventListener('click', ()=>applyLang('zh'));
+    btnEn.addEventListener('click', ()=>applyLang('en'));
   </script>
 </body>
 </html>
