@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow Runners @ 虹橋</title>
+  <meta name="description" content="我們在虹橋一起奔跑 — 8位夥伴，一段熱愛運動的故事">
+  <style>
+    :root{--bg:#ffffff;--text:#1f2937;--muted:#6b7280;--card:#f3f4f6;--accent:#2563eb;--accent-2:#60a5fa}
+    :root.dark{--bg:#0b1220;--text:#e5e7eb;--muted:#9ca3af;--card:#111827;--accent:#60a5fa;--accent-2:#93c5fd}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(6px);background:color-mix(in oklab, var(--bg) 85%, transparent);border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);z-index:5}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    #brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+    #brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(45deg,#00c6ff,#0072ff);display:inline-grid;place-items:center;color:#fff;font-weight:700;font-size:14px}
+    #nav{display:flex;gap:14px}
+    #nav a{text-decoration:none;color:var(--text);opacity:.9}
+    #nav a:hover{opacity:1;color:var(--accent)}
+    #theme-toggle{border:1px solid color-mix(in oklab, var(--text) 20%, transparent);background:transparent;color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
+
+    .hero{padding:72px 0 36px;background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 12%, transparent), transparent)}
+    .hero h1{font-size:clamp(28px,6vw,48px);margin:0 0 8px}
+    .hero p{font-size:clamp(16px,2.6vw,20px);color:var(--muted);margin:0}
+    .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
+    .section{padding:48px 0}
+    .section h2{font-size:clamp(22px,4vw,32px);margin:0 0 18px}
+    .lead{color:var(--muted);margin:0 0 24px}
+
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.grid{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid color-mix(in oklab, var(--text) 8%, transparent)}
+    .card img{width:100%;height:180px;object-fit:cover;display:block}
+    .card .card-body{padding:14px}
+    .card .role{color:var(--accent);font-weight:600;margin:.2rem 0}
+
+    .activity{display:grid;grid-template-columns:160px 1fr;gap:16px;padding:14px;border-radius:16px;border:1px solid color-mix(in oklab, var(--text) 8%, transparent);background:var(--card);margin-bottom:12px}
+    .activity img{width:160px;height:100px;object-fit:cover;border-radius:10px}
+    @media (max-width:560px){.activity{grid-template-columns:1fr}.activity img{width:100%;height:160px}}
+    .muted{color:var(--muted)}
+
+    .footer{padding:28px 0;border-top:1px solid color-mix(in oklab, var(--text) 10%, transparent);color:var(--muted);font-size:14px}
+    code.inline{background:color-mix(in oklab, var(--text) 8%, transparent);padding:2px 6px;border-radius:6px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a id="brand" href="#top"><span class="logo">RR</span><strong>Rainbow Runners</strong></a>
+        <div id="nav">
+          <a href="#about">關於</a>
+          <a href="#members">成員</a>
+          <a href="#location">虹橋</a>
+          <a href="#records">活動</a>
+          <a href="#contact">加入我們</a>
+        </div>
+        <button id="theme-toggle" aria-pressed="false">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <h1 id="site-title">Rainbow Runners @ 虹橋</h1>
+        <p id="site-tagline">我們在虹橋一起奔跑 — 8位夥伴，一段熱愛運動的故事</p>
+        <div class="cta">
+          <a class="btn primary" href="#members">看看我們的團隊</a>
+          <a class="btn" href="#contact">想一起跑？加入我們</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>關於我們</h2>
+        <p class="lead">我們是一群熱愛跑步的朋友，每週固定在「虹橋」集合；用腳步丈量每一次日出與夕陽。8位成員，8種故事。</p>
+      </div>
+    </section>
+
+    <section id="members" class="section">
+      <div class="container">
+        <h2>成員介紹</h2>
+        <div id="members-grid" class="grid"></div>
+      </div>
+    </section>
+
+    <section id="location" class="section">
+      <div class="container">
+        <h2>虹橋 — 我們的起跑點</h2>
+        <p id="loc-desc" class="lead">虹橋是我們的跑步基地，河景開闊、道路平坦；不管是晨跑還是夜跑，這裡總有美麗風景陪伴。</p>
+        <p><a id="loc-map" class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=%E8%99%B9%E6%A9%8B">在 Google 地圖查看</a></p>
+      </div>
+    </section>
+
+    <section id="records" class="section">
+      <div class="container">
+        <h2>活動紀錄</h2>
+        <div id="activities"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>加入我們</h2>
+        <p class="lead">喜歡一起跑嗎？聯絡我們，或直接來虹橋找我們！</p>
+        <p>
+          Email：<a id="contact-email" href="#">hello@rainbowrunners.example</a><br>
+          LINE 群：<a id="contact-line" href="#" target="_blank" rel="noopener">加入連結</a><br>
+          Instagram：<a id="contact-ig" href="#" target="_blank" rel="noopener">@yourclub</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year"></span> Rainbow Runners · 用腳步和笑聲寫下每一段里程</span>
+    </div>
+  </footer>
+
+  <script>
+    // --- 可編輯資料（改這段就好） ---
+    window.SITE_DATA = {
+      site: {
+        title: "Rainbow Runners @ 虹橋",
+        tagline: "我們在虹橋一起奔跑 — 8位夥伴，一段熱愛運動的故事",
+        contact: {
+          email: "hello@rainbowrunners.example",
+          line: "https://line.me/R/ti/g/your-line-group",
+          instagram: "https://instagram.com/yourclub"
+        },
+        location: {
+          name: "虹橋",
+          description: "虹橋是我們的跑步基地，河景開闊、道路平坦；不管是晨跑還是夜跑，這裡總有美麗風景陪伴。",
+          maps_url: "https://www.google.com/maps?q=%E8%99%B9%E6%A9%8B"
+        }
+      },
+      members: [
+        {name:"隊長 A", role:"配速 5'30", bio:"最愛日出晨跑，擅長帶隊配速。", img:"https://images.unsplash.com/photo-1521417531039-95f2bcd28949?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 B", role:"全馬 PB 3:45", bio:"補給達人，賽事情報通。", img:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 C", role:"10K 愛好者", bio:"攝影控，負責幫大家拍照。", img:"https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 D", role:"越野新手", bio:"最愛斜坡訓練，樂觀小太陽。", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 E", role:"長距離選手", bio:"補水背包不離身，耐力超群。", img:"https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 F", role:"配速 6'00", bio:"剛入坑的開心跑者。", img:"https://images.unsplash.com/photo-1520975652280-236d6a87f12d?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 G", role:"半馬 PB 1:45", bio:"補給口味：珍奶＋地瓜。", img:"https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=400&auto=format&fit=crop"},
+        {name:"成員 H", role:"配速 5'00", bio:"間歇課表的死忠信徒。", img:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400&auto=format&fit=crop"}
+      ],
+      activities: [
+        {date:"2025-07-15", title:"夏季日落跑", distance:"10K", notes:"夕陽很美，補水充足。", img:"https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=800&auto=format&fit=crop"},
+        {date:"2025-06-10", title:"雨中奔跑", distance:"5K", notes:"專注步頻與安全。", img:"https://images.unsplash.com/photo-1520975853989-3b002da0c46b?q=80&w=800&auto=format&fit=crop"}
+      ]
+    };
+
+    // --- 功能腳本 ---
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+    const data = window.SITE_DATA;
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hero
+    $('#site-title').textContent = data.site.title;
+    $('#site-tagline').textContent = data.site.tagline;
+
+    // Members
+    const grid = document.getElementById('members-grid');
+    data.members.forEach(m => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${m.img}" alt="${m.name}">
+        <div class="card-body">
+          <h3>${m.name}</h3>
+          <p class="role">${m.role}</p>
+          <p>${m.bio}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Location
+    $('#loc-desc').textContent = data.site.location.description;
+    const map = document.getElementById('loc-map');
+    map.href = data.site.location.maps_url;
+
+    // Activities
+    const actWrap = document.getElementById('activities');
+    data.activities.forEach(a => {
+      const item = document.createElement('div');
+      item.className = 'activity';
+      item.innerHTML = `
+        <img src="${a.img}" alt="${a.title}">
+        <div>
+          <h4>${a.title} · ${a.distance}</h4>
+          <p class="muted">${a.date}</p>
+          <p>${a.notes}</p>
+        </div>
+      `;
+      actWrap.appendChild(item);
+    });
+
+    // Contact
+    const email = document.getElementById('contact-email');
+    email.textContent = data.site.contact.email;
+    email.href = 'mailto:' + data.site.contact.email;
+    document.getElementById('contact-line').href = data.site.contact.line;
+    document.getElementById('contact-ig').href = data.site.contact.instagram;
+
+    // Smooth scroll for nav
+    $$('#nav a').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // Dark mode toggle
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const mode = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      toggle.setAttribute('aria-pressed', mode === 'dark');
+      localStorage.setItem('site-theme', mode);
+    });
+    const saved = localStorage.getItem('site-theme');
+    if (saved === 'dark') document.documentElement.classList.add('dark');
+  </script>
+</body>
+</html>
